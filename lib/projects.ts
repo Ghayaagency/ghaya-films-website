@@ -1,5 +1,5 @@
 export type ProjectCategory = "documentary" | "social";
-export type SocialFormat = "reels" | "carousels" | "images";
+export type SocialFormat = "reels" | "carousels" | "images" | "long-form";
 
 export type MediaItem =
   | { type: "video"; src: string; poster?: string }
@@ -10,91 +10,37 @@ export type Project = {
   title: string;
   client: string;
   category: ProjectCategory;
-  socialFormat?: SocialFormat;
+  socialFormats?: SocialFormat[];
   year: string;
   role: string;
   blurb: string;
   cover: MediaItem;
   gallery: MediaItem[];
   credits: { label: string; name: string }[];
+  pending?: boolean;
 };
 
 export const projects: Project[] = [
   {
-    slug: "boulders",
-    title: "Boulders",
-    client: "Boulders Climbing Gym",
-    category: "documentary",
-    year: "2025",
-    role: "Direction, Filming, Edit",
-    blurb:
-      "A short documentary following route-setters and climbers as they chase the next problem — the discipline, the falls, and the small victories that come from chasing a passion.",
-    cover: { type: "video", src: "/videos/hero-boulders.mp4" },
-    gallery: [
-      { type: "video", src: "/videos/hero-boulders.mp4" },
-      { type: "video", src: "/videos/boulders-vertical.mp4" },
-    ],
-    credits: [
-      { label: "Director", name: "Ghaya Films" },
-      { label: "Client", name: "Boulders Climbing Gym" },
-    ],
-  },
-  {
-    slug: "dayton-one-way-to-qatar",
-    title: "One Way to Qatar",
-    client: "Dayton",
-    category: "documentary",
-    year: "2025",
-    role: "Direction, Filming, Edit",
-    blurb:
-      "Dayton spends Ramadan in Qatar as a non-Muslim exploring the culture, the fasting, and the community around him — a narrative series about discovering a place through its people.",
-    cover: { type: "video", src: "/videos/hero-boulders.mp4" },
-    gallery: [{ type: "video", src: "/videos/hero-boulders.mp4" }],
-    credits: [
-      { label: "Director", name: "Ghaya Films" },
-      { label: "Featuring", name: "Dayton" },
-    ],
-  },
-  {
     slug: "vrc",
-    title: "Quiet Consistency",
+    title: "VRC",
     client: "VRC",
-    category: "documentary",
-    year: "2025",
-    role: "Direction, Filming, Edit",
-    blurb:
-      "A feature on Angie and the quiet, consistent effort behind every run — the vibe of the work day that turns into the desire to move.",
-    cover: { type: "video", src: "/videos/hero-boulders.mp4" },
-    gallery: [{ type: "video", src: "/videos/hero-boulders.mp4" }],
-    credits: [
-      { label: "Director", name: "Ghaya Films" },
-      { label: "Featuring", name: "Angie" },
-    ],
-  },
-  {
-    slug: "berenjak-maha-island",
-    title: "Berenjak, Maha Island",
-    client: "Berenjak",
     category: "social",
-    socialFormat: "images",
+    socialFormats: ["reels", "carousels", "images"],
     year: "2025",
-    role: "Photography",
+    role: "Filming, Edit",
     blurb:
-      "On-location photography at Berenjak's Maha Island and Souq Waqif openings — the food, the crowd, the atmosphere.",
-    cover: { type: "image", src: "/images/berenjak/1.jpg" },
-    gallery: [
-      { type: "image", src: "/images/berenjak/1.jpg" },
-      { type: "image", src: "/images/berenjak/2.jpg" },
-      { type: "image", src: "/images/berenjak/3.jpg" },
-    ],
-    credits: [{ label: "Photography", name: "Ghaya Films" }],
+      "A run of content for VRC across reels, carousels, and stills — educational stretches, work-to-run vibes, and feature moments built for the scroll.",
+    cover: { type: "video", src: "/videos/boulders-vertical.mp4" },
+    gallery: [{ type: "video", src: "/videos/boulders-vertical.mp4" }],
+    credits: [{ label: "Edit", name: "Ghaya Films" }],
   },
   {
     slug: "heenat-salam",
     title: "Heenat Salam",
     client: "Heenat Salam",
     category: "social",
-    socialFormat: "carousels",
+    socialFormats: ["images"],
     year: "2025",
     role: "Photography",
     blurb:
@@ -109,18 +55,85 @@ export const projects: Project[] = [
     credits: [{ label: "Photography", name: "Ghaya Films" }],
   },
   {
-    slug: "vrc-reels",
-    title: "VRC Reels",
-    client: "VRC",
+    slug: "berenjak-maha-island",
+    title: "Berenjak, Maha Island",
+    client: "Berenjak",
     category: "social",
-    socialFormat: "reels",
+    socialFormats: ["images"],
+    year: "2025",
+    role: "Photography",
+    blurb:
+      "On-location photography at Berenjak's Maha Island and Souq Waqif openings — the food, the crowd, the atmosphere.",
+    cover: { type: "image", src: "/images/berenjak/1.jpg" },
+    gallery: [
+      { type: "image", src: "/images/berenjak/1.jpg" },
+      { type: "image", src: "/images/berenjak/2.jpg" },
+      { type: "image", src: "/images/berenjak/3.jpg" },
+    ],
+    credits: [{ label: "Photography", name: "Ghaya Films" }],
+  },
+  {
+    slug: "dayton-one-way-to-qatar",
+    title: "One Way to Qatar",
+    client: "Dayton Kendrick",
+    category: "social",
+    socialFormats: ["reels", "long-form"],
     year: "2025",
     role: "Filming, Edit",
     blurb:
-      "A run of short-form reels for VRC — educational stretches, work-to-run vibes, and feature moments built for the scroll.",
+      "Dayton Kendrick spends Ramadan in Qatar as a non-Muslim exploring the culture, the fasting, and the community around him — cut for reels and long-form.",
     cover: { type: "video", src: "/videos/boulders-vertical.mp4" },
     gallery: [{ type: "video", src: "/videos/boulders-vertical.mp4" }],
+    credits: [
+      { label: "Edit", name: "Ghaya Films" },
+      { label: "Featuring", name: "Dayton Kendrick" },
+    ],
+  },
+  {
+    slug: "boulders",
+    title: "Boulders",
+    client: "Boulders Climbing Gym",
+    category: "social",
+    socialFormats: ["reels", "carousels"],
+    year: "2025",
+    role: "Filming, Edit",
+    blurb:
+      "Route-setters and climbers chasing the next problem — cut into reels and carousels for Boulders' social channels.",
+    cover: { type: "video", src: "/videos/hero-boulders.mp4" },
+    gallery: [
+      { type: "video", src: "/videos/hero-boulders.mp4" },
+      { type: "video", src: "/videos/boulders-vertical.mp4" },
+    ],
     credits: [{ label: "Edit", name: "Ghaya Films" }],
+  },
+  {
+    slug: "al-mujadilah-explainer",
+    title: "Al-Mujadilah Explainer",
+    client: "Al-Mujadilah: Center & Mosque for Women",
+    category: "social",
+    socialFormats: ["reels"],
+    year: "2025",
+    role: "Filming, Edit",
+    blurb:
+      "A set of explainer reels introducing Al-Mujadilah Center & Mosque for Women — footage pending.",
+    cover: { type: "image", src: "/images/placeholder.jpg" },
+    gallery: [{ type: "image", src: "/images/placeholder.jpg" }],
+    credits: [{ label: "Edit", name: "Ghaya Films" }],
+    pending: true,
+  },
+  {
+    slug: "al-mujadilah-documentary",
+    title: "Al-Mujadilah",
+    client: "Al-Mujadilah: Center & Mosque for Women",
+    category: "documentary",
+    year: "2025",
+    role: "Direction, Filming, Edit",
+    blurb:
+      "A documentary piece on Al-Mujadilah Center & Mosque for Women — video pending, coming soon via Vimeo.",
+    cover: { type: "image", src: "/images/placeholder.jpg" },
+    gallery: [{ type: "image", src: "/images/placeholder.jpg" }],
+    credits: [{ label: "Director", name: "Ghaya Films" }],
+    pending: true,
   },
 ];
 
@@ -137,4 +150,5 @@ export const socialFormatLabel: Record<SocialFormat, string> = {
   reels: "Reels",
   carousels: "Carousels",
   images: "Images",
+  "long-form": "Long-form",
 };

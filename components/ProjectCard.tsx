@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRef } from "react";
-import { categoryLabel, type Project } from "@/lib/projects";
+import { categoryLabel, socialFormatLabel, type Project } from "@/lib/projects";
 
 export default function ProjectCard({ project }: { project: Project }) {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -39,15 +39,26 @@ export default function ProjectCard({ project }: { project: Project }) {
         />
       )}
       <div className="absolute inset-0 bg-gradient-to-t from-navy-deep via-navy-deep/10 to-transparent" />
-      <span className="absolute top-4 left-4 rounded-full border border-cream/30 bg-navy-deep/60 px-3 py-1 font-brandon text-[11px] uppercase tracking-widest backdrop-blur-sm">
-        {categoryLabel[project.category]}
-      </span>
+      <div className="absolute top-4 left-4 flex flex-wrap gap-2">
+        <span className="rounded-full border border-cream/30 bg-navy-deep/60 px-3 py-1 font-brandon text-[11px] uppercase tracking-widest backdrop-blur-sm">
+          {categoryLabel[project.category]}
+        </span>
+        {project.pending && (
+          <span className="rounded-full border border-fire/50 bg-fire/10 px-3 py-1 font-brandon text-[11px] uppercase tracking-widest text-fire-soft backdrop-blur-sm">
+            Coming soon
+          </span>
+        )}
+      </div>
       <div className="absolute inset-x-0 bottom-0 p-6">
-        <p className="font-brandon text-xs uppercase tracking-widest text-cream-dim">
+        <p className="text-xs uppercase tracking-widest text-cream-dim">
           {project.client}
-          {project.socialFormat ? ` - ${project.socialFormat}` : ""}
         </p>
         <p className="mt-1 font-display text-xl">{project.title}</p>
+        {project.socialFormats && (
+          <p className="mt-1 text-xs text-cream-dim/70">
+            {project.socialFormats.map((f) => socialFormatLabel[f]).join(" / ")}
+          </p>
+        )}
       </div>
     </Link>
   );

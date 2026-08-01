@@ -72,9 +72,10 @@ export default async function ProjectPage({
           <p className="font-brandon text-xs uppercase tracking-[0.3em] text-cream-dim">
             {isDocumentary
               ? categoryLabel.documentary
-              : project.socialFormat
-                ? socialFormatLabel[project.socialFormat]
+              : project.socialFormats
+                ? project.socialFormats.map((f) => socialFormatLabel[f]).join(" / ")
                 : categoryLabel.social}
+            {project.pending ? " — Coming soon" : ""}
           </p>
           <h1 className="mt-3 font-display text-4xl sm:text-5xl md:text-6xl">
             {project.title}
@@ -124,7 +125,7 @@ export default async function ProjectPage({
       {/* Gallery — treatment differs by type */}
       <section className="px-6 md:px-10">
         <div className="mx-auto max-w-6xl">
-          {project.socialFormat === "carousels" || project.socialFormat === "reels" ? (
+          {project.socialFormats?.some((f) => f === "carousels" || f === "reels") ? (
             <Reveal>
               <DragCarousel items={project.gallery} />
             </Reveal>

@@ -20,6 +20,7 @@ const filters: { label: string; value: string }[] = [
   { label: socialFormatLabel.reels, value: "reels" },
   { label: socialFormatLabel.carousels, value: "carousels" },
   { label: socialFormatLabel.images, value: "images" },
+  { label: socialFormatLabel["long-form"], value: "long-form" },
 ];
 
 export default async function ProjectsPage({
@@ -35,7 +36,7 @@ export default async function ProjectsPage({
     if (active === "documentary" || active === "social") {
       return project.category === (active as ProjectCategory);
     }
-    return project.socialFormat === (active as SocialFormat);
+    return project.socialFormats?.includes(active as SocialFormat) ?? false;
   });
 
   return (
