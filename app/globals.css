@@ -1,26 +1,103 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-navy: #06267d;
+  --color-navy-deep: #041646;
+  --color-navy-soft: #0c3299;
+  --color-cream: #fff6de;
+  --color-cream-dim: #d9cfae;
+  --color-fire: #3d7bff;
+  --color-fire-soft: #7fb0ff;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: var(--color-navy-deep);
+  --color-foreground: var(--color-cream);
+  --color-navy: var(--color-navy);
+  --color-navy-deep: var(--color-navy-deep);
+  --color-navy-soft: var(--color-navy-soft);
+  --color-cream: var(--color-cream);
+  --color-cream-dim: var(--color-cream-dim);
+  --color-fire: var(--color-fire);
+  --color-fire-soft: var(--color-fire-soft);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+  --font-arabic: var(--font-arabic);
+  --font-brandon: var(--font-brandon);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  scrollbar-color: var(--color-fire) transparent;
+}
+
+html {
+  background: var(--color-navy-deep);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-navy-deep);
+  color: var(--color-cream);
+  font-family: var(--font-body), Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-fire);
+  color: var(--color-navy-deep);
+}
+
+/* cursor is custom-rendered; hide the native pointer on fine-pointer devices */
+@media (pointer: fine) {
+  body {
+    cursor: none;
+  }
+  a,
+  button,
+  input,
+  textarea,
+  [role="button"] {
+    cursor: none;
+  }
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+@keyframes grain-pan {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-4%, -2%);
+  }
+  20% {
+    transform: translate(3%, 4%);
+  }
+  30% {
+    transform: translate(-3%, 2%);
+  }
+  40% {
+    transform: translate(4%, -3%);
+  }
+  50% {
+    transform: translate(-2%, 4%);
+  }
+  60% {
+    transform: translate(3%, -4%);
+  }
+  70% {
+    transform: translate(-4%, 3%);
+  }
+  80% {
+    transform: translate(2%, -2%);
+  }
+  90% {
+    transform: translate(-3%, -4%);
+  }
+}
+
+.grain-pan {
+  animation: grain-pan 1.4s steps(1, end) infinite;
 }
