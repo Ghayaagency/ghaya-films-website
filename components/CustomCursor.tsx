@@ -64,16 +64,23 @@ export default function CustomCursor() {
     <div className="pointer-events-none fixed inset-0 z-[999] hidden md:block" aria-hidden="true">
       <div
         ref={flameRef}
-        className="absolute top-0 left-0 h-6 w-6 rounded-full mix-blend-screen"
+        className="absolute top-0 left-0 h-6 w-6 rounded-full"
         style={{
           background:
-            "radial-gradient(circle, rgba(125,180,255,0.9) 0%, rgba(61,123,255,0.55) 45%, rgba(61,123,255,0) 75%)",
-          filter: "blur(2px)",
+            "radial-gradient(circle, rgba(125,180,255,0.85) 0%, rgba(61,123,255,0.45) 45%, rgba(61,123,255,0) 75%)",
+          willChange: "transform",
+          backfaceVisibility: "hidden",
+          transform: "translateZ(0)",
         }}
       />
       <div
         ref={dotRef}
         className="absolute top-0 left-0 h-1.5 w-1.5 rounded-full bg-cream"
+        style={{
+          willChange: "transform",
+          backfaceVisibility: "hidden",
+          transform: "translateZ(0)",
+        }}
       />
     </div>
   );
