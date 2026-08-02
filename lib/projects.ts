@@ -142,8 +142,8 @@ export function getProject(slug: string) {
 }
 
 export const categoryLabel: Record<ProjectCategory, string> = {
-  documentary: "Narrative",
-  social: "Social Media",
+  documentary: "Films & Campaigns",
+  social: "Digital Content",
 };
 
 export const socialFormatLabel: Record<SocialFormat, string> = {

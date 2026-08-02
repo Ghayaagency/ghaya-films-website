@@ -5,7 +5,6 @@ import Reveal from "@/components/Reveal";
 import {
   projects,
   categoryLabel,
-  socialFormatLabel,
   type ProjectCategory,
   type SocialFormat,
 } from "@/lib/projects";
@@ -17,10 +16,7 @@ export const metadata: Metadata = {
 const filters: { label: string; value: string }[] = [
   { label: "All", value: "" },
   { label: categoryLabel.documentary, value: "documentary" },
-  { label: socialFormatLabel.reels, value: "reels" },
-  { label: socialFormatLabel.carousels, value: "carousels" },
-  { label: socialFormatLabel.images, value: "images" },
-  { label: socialFormatLabel["long-form"], value: "long-form" },
+  { label: categoryLabel.social, value: "social" },
 ];
 
 export default async function ProjectsPage({
@@ -46,8 +42,8 @@ export default async function ProjectsPage({
           Projects
         </Reveal>
         <Reveal delay={100} className="mt-4 max-w-xl text-cream-dim">
-          Every project gets its own treatment &mdash; from full documentary
-          pieces to reels, carousels, and stills built for social.
+          Every project is approached differently &mdash; from full-scale
+          films and campaigns to content designed for digital platforms.
         </Reveal>
 
         <nav className="mt-10 flex flex-wrap gap-3">
