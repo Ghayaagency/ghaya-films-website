@@ -31,7 +31,7 @@ export const projects: Project[] = [
     role: "Production",
     blurb:
       "VRC wanted a space where every runner feels like they belong. We shaped that into a simple message — running is for everyone, all you have to do is come — carried across reels and carousels built for the community.",
-    cover: { type: "video", src: "/videos/vrc/reel.mp4" },
+    cover: { type: "video", src: "/videos/vrc/hero-loop.mp4" },
     gallery: [
       { type: "video", src: "/videos/vrc/reel.mp4" },
       { type: "video", src: "/videos/vrc/carousel/card-1.mp4" },
@@ -40,6 +40,7 @@ export const projects: Project[] = [
       { type: "video", src: "/videos/vrc/carousel/card-4.mp4" },
       { type: "video", src: "/videos/vrc/carousel/card-5.mp4" },
       { type: "video", src: "/videos/vrc/carousel/card-6.mp4" },
+      { type: "video", src: "/videos/vrc/angie-feature.mp4" },
     ],
     credits: [{ label: "Production", name: "Ghaya Films" }],
   },

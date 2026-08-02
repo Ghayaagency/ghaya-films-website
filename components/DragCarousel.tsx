@@ -10,7 +10,9 @@ export default function DragCarousel({ items }: { items: MediaItem[] }) {
     containScroll: "trimSnaps",
   });
   const [selected, setSelected] = useState(0);
+  const [muted, setMuted] = useState(true);
   const skewRef = useRef<HTMLDivElement>(null);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
@@ -48,8 +50,43 @@ export default function DragCarousel({ items }: { items: MediaItem[] }) {
     };
   }, [emblaApi, onSelect]);
 
+  useEffect(() => {
+    videoRefs.current.forEach((video) => {
+      if (video) video.muted = muted;
+    });
+  }, [muted]);
+
+  const hasVideo = items.some((item) => item.type === "video");
+
   return (
-    <div className="w-full">
+    <div className="relative w-full">
+      {hasVideo && (
+        <button
+          type="button"
+          data-cursor-hover
+          onClick={() => setMuted((m) => !m)}
+          className="absolute top-0 right-0 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-cream/30 bg-navy-deep/70 backdrop-blur-sm transition-colors hover:border-fire"
+          aria-label={muted ? "Unmute" : "Mute"}
+        >
+          {muted ? (
+            <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4" aria-hidden="true">
+              <path d="M4 9v6h4l5 5V4L8 9H4Z" fill="currentColor" />
+              <path d="M17 8.5 21.5 13M21.5 8.5 17 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+            </svg>
+          ) : (
+            <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4" aria-hidden="true">
+              <path d="M4 9v6h4l5 5V4L8 9H4Z" fill="currentColor" />
+              <path
+                d="M16.5 8.5a5 5 0 0 1 0 7M19 6a9 9 0 0 1 0 12"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+              />
+            </svg>
+          )}
+        </button>
+      )}
+
       <div ref={skewRef} className="overflow-hidden transition-transform duration-200 ease-out">
         <div className="overflow-hidden" ref={emblaRef}>
           <div className="flex touch-pan-y gap-4 active:cursor-grabbing" style={{ cursor: "grab" }}>
@@ -60,6 +97,9 @@ export default function DragCarousel({ items }: { items: MediaItem[] }) {
               >
                 {item.type === "video" ? (
                   <video
+                    ref={(el) => {
+                      videoRefs.current[i] = el;
+                    }}
                     className="pointer-events-none h-full w-full object-cover"
                     src={item.src}
                     autoPlay

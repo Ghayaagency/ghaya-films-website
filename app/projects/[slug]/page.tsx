@@ -66,7 +66,6 @@ export default async function ProjectPage({
             className="absolute inset-0 h-full w-full object-cover"
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-navy-deep via-navy-deep/40 to-navy-deep/10" />
 
         <div className="relative z-10 w-full px-6 pb-12 md:px-10 md:pb-16">
           <p className="font-brandon text-xs uppercase tracking-[0.3em] text-cream-dim">
