@@ -33,25 +33,16 @@ export default function Home() {
           loop
           playsInline
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy-deep via-navy-deep/50 to-navy-deep/20" />
-        <div className="absolute inset-0 bg-navy-deep/20" />
 
         <div className="relative z-10 w-full px-6 pb-16 md:px-10 md:pb-24">
-          <p className="font-arabic text-6xl leading-none text-fire-soft sm:text-7xl md:text-8xl">
-            غاية
-          </p>
-          <h1 className="mt-4 max-w-3xl font-display text-4xl leading-[1.05] text-balance sm:text-5xl md:text-6xl">
-            Ghaya means passion &amp; purpose.
-            <span className="block text-cream-dim">
-              We help you find yours, and film it.
-            </span>
+          <h1 className="max-w-3xl font-display text-4xl leading-[1.05] text-balance sm:text-5xl md:text-6xl">
+            Human stories come first.
           </h1>
           <p className="mt-6 max-w-xl text-sm text-cream-dim sm:text-base">
-            A production house focused on human storytelling first &mdash;
-            whether it&rsquo;s a narrative documentary or a piece built for
-            social media.
+            We create films built around real people, honest experiences,
+            and ideas worth sharing.
           </p>
-          <GhayaCTA className="mt-10" />
+          <GhayaCTA className="mt-10" label="Tell us your Ghaya" />
         </div>
       </section>
 
@@ -59,16 +50,17 @@ export default function Home() {
       <section className="mx-auto max-w-6xl px-6 py-24 md:px-10 md:py-36">
         <div className="grid gap-12 md:grid-cols-[1fr_1.2fr] md:gap-20">
           <Reveal as="h2" className="font-display text-3xl leading-tight sm:text-4xl">
-            To explore humans and their passion &mdash; and give it a way to
-            be seen.
+            Every good film starts with listening.
           </Reveal>
           <div className="space-y-6 text-cream-dim">
             <Reveal delay={100}>
-              Ghaya is Arabic for <span className="text-cream">purpose</span>.
-              Our goal is simple: discover a person&rsquo;s passion, and
-              explore it until it can be felt by anyone watching &mdash;
-              simple, but something that ignites what&rsquo;s already inside
-              the viewer.
+              At Ghaya Films, we take the time to understand the people
+              behind each story&mdash;what matters to them, what they have
+              experienced, and what deserves to be seen.
+            </Reveal>
+            <Reveal delay={150}>
+              We then shape that into a film that feels honest, thoughtful,
+              and human.
             </Reveal>
             <Reveal delay={200}>
               <Link
@@ -76,7 +68,7 @@ export default function Home() {
                 data-cursor-hover
                 className="inline-flex items-center gap-2 text-cream underline decoration-fire/60 underline-offset-4 transition-colors hover:decoration-fire"
               >
-                Tell us what yours is &rarr;
+                Start a project &rarr;
               </Link>
             </Reveal>
           </div>

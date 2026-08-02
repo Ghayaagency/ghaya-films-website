@@ -2,8 +2,10 @@ import Link from "next/link";
 
 export default function GhayaCTA({
   className = "",
+  label = "let’s find your ghaya?",
 }: {
   className?: string;
+  label?: string;
 }) {
   return (
     <Link
@@ -15,7 +17,7 @@ export default function GhayaCTA({
         className="absolute inset-0 -z-10 scale-0 rounded-full bg-fire/20 blur-xl transition-transform duration-500 group-hover:scale-150"
         aria-hidden="true"
       />
-      let&rsquo;s find your ghaya?
+      {label}
       <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">
         &rarr;
       </span>

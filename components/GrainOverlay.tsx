@@ -9,7 +9,7 @@ export default function GrainOverlay({
       className={`pointer-events-none fixed inset-0 z-40 overflow-hidden ${className}`}
     >
       <svg
-        className="grain-pan absolute -inset-1/2 h-[200%] w-[200%] opacity-[0.14]"
+        className="grain-pan absolute -inset-1/2 h-[200%] w-[200%] opacity-[0.22]"
         style={{ isolation: "isolate" }}
       >
         <filter
