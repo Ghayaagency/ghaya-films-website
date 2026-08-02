@@ -3,20 +3,22 @@ import Reveal from "@/components/Reveal";
 import GhayaCTA from "@/components/GhayaCTA";
 import ProjectCard from "@/components/ProjectCard";
 import Testimonials from "@/components/Testimonials";
-import { projects, categoryLabel } from "@/lib/projects";
+import { projects } from "@/lib/projects";
 
 const serviceGroups = [
   {
     key: "documentary",
-    title: categoryLabel.documentary,
+    title: "Films & Campaigns",
     description:
-      "Long-form and short-form storytelling that follows real people through real moments — credit-led, cinematic, unhurried.",
+      "Documentaries, branded films, interviews, and campaign stories shaped around real people and meaningful ideas.",
+    cta: "View films",
   },
   {
     key: "social",
-    title: categoryLabel.social,
+    title: "Digital Content",
     description:
-      "Reels, carousels, and images built for the scroll — same human-first eye, tuned for how people actually watch.",
+      "Short-form video and visual content created for digital platforms—clear, engaging, and grounded in human stories.",
+    cta: "View content",
   },
 ] as const;
 
@@ -79,7 +81,7 @@ export default function Home() {
       <section className="border-t border-cream/10 px-6 py-24 md:px-10 md:py-36">
         <div className="mx-auto max-w-6xl">
           <Reveal className="font-display text-3xl sm:text-4xl">
-            What we make
+            What we create
           </Reveal>
           <div className="mt-12 grid gap-8 md:grid-cols-2 md:gap-6">
             {serviceGroups.map((service, i) => (
@@ -98,7 +100,7 @@ export default function Home() {
                     {service.description}
                   </p>
                   <span className="mt-6 inline-flex items-center gap-2 font-brandon text-sm uppercase tracking-widest text-cream-dim transition-colors group-hover:text-fire-soft">
-                    View work <span aria-hidden="true">&rarr;</span>
+                    {service.cta} <span aria-hidden="true">&rarr;</span>
                   </span>
                 </Link>
               </Reveal>

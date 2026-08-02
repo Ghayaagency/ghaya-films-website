@@ -10,7 +10,7 @@ type FormValues = {
   message: string;
 };
 
-const projectTypes = ["Narrative", "Social Media"] as const;
+const projectTypes = ["Films & Campaigns", "Digital Content"] as const;
 
 export default function GhayaForm() {
   const {
@@ -91,7 +91,7 @@ export default function GhayaForm() {
                 {...register("projectType", { required: "Pick one." })}
                 className="peer sr-only"
               />
-              <span className="block rounded-lg border border-cream/20 px-4 py-4 text-center font-brandon transition-colors peer-checked:border-fire peer-checked:bg-fire/10 peer-checked:text-cream hover:border-cream/40">
+              <span className="block rounded-lg border border-cream/20 px-4 py-4 text-center transition-colors peer-checked:border-fire peer-checked:bg-fire/10 peer-checked:text-cream hover:border-cream/40">
                 {type}
               </span>
             </label>
