@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import ProjectCard from "@/components/ProjectCard";
+import MasonryProjectGrid from "@/components/MasonryProjectGrid";
 import Reveal from "@/components/Reveal";
 import {
   projects,
@@ -63,12 +63,10 @@ export default async function ProjectsPage({
           ))}
         </nav>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((project, i) => (
-            <Reveal key={project.slug} delay={(i % 3) * 100}>
-              <ProjectCard project={project} />
-            </Reveal>
-          ))}
+        <div className="mt-12">
+          <Reveal>
+            <MasonryProjectGrid projects={filtered} />
+          </Reveal>
         </div>
 
         {filtered.length === 0 && (
