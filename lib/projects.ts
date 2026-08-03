@@ -37,23 +37,31 @@ export const projects: Project[] = [
     role: "Production",
     blurb:
       "VRC wanted a space where every runner feels like they belong. We shaped that into a simple message — running is for everyone, all you have to do is come — carried across reels and carousels built for the community.",
-    cover: { type: "video", src: "/videos/vrc/reel.mp4" },
+    cover: { type: "video", src: "/videos/vrc/reels/5-short-breath-2.mp4" },
     gallery: [
-      { type: "video", src: "/videos/vrc/reel.mp4" },
+      { type: "video", src: "/videos/vrc/reels/1-angie-feature.mp4" },
+      { type: "video", src: "/videos/vrc/reels/2-sami-feature.mp4" },
+      { type: "video", src: "/videos/vrc/reels/3-educational-piece.mp4" },
+      { type: "video", src: "/videos/vrc/reels/4-work-vibe-to-running-desire.mp4" },
+      { type: "video", src: "/videos/vrc/reels/5-short-breath-2.mp4" },
+      { type: "video", src: "/videos/vrc/reels/6-short-breath.mp4" },
       { type: "video", src: "/videos/vrc/carousel/card-1.mp4" },
       { type: "video", src: "/videos/vrc/carousel/card-2.mp4" },
       { type: "video", src: "/videos/vrc/carousel/card-3.mp4" },
       { type: "video", src: "/videos/vrc/carousel/card-4.mp4" },
       { type: "video", src: "/videos/vrc/carousel/card-5.mp4" },
       { type: "video", src: "/videos/vrc/carousel/card-6.mp4" },
-      { type: "video", src: "/videos/vrc/angie-feature.mp4" },
     ],
     sections: [
       {
         label: "Reel",
         items: [
-          { type: "video", src: "/videos/vrc/reel.mp4" },
-          { type: "video", src: "/videos/vrc/angie-feature.mp4" },
+          { type: "video", src: "/videos/vrc/reels/1-angie-feature.mp4" },
+          { type: "video", src: "/videos/vrc/reels/2-sami-feature.mp4" },
+          { type: "video", src: "/videos/vrc/reels/3-educational-piece.mp4" },
+          { type: "video", src: "/videos/vrc/reels/4-work-vibe-to-running-desire.mp4" },
+          { type: "video", src: "/videos/vrc/reels/5-short-breath-2.mp4" },
+          { type: "video", src: "/videos/vrc/reels/6-short-breath.mp4" },
         ],
       },
       {

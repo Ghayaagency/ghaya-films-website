@@ -1,6 +1,7 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useSharedAudio } from "@/components/AudioContext";
 import type { MediaItem } from "@/lib/projects";
 
 export default function MediaTile({
@@ -13,7 +14,15 @@ export default function MediaTile({
   className?: string;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [muted, setMuted] = useState(true);
+  const [volume, setVolume] = useState(1);
+  const { activeId, setActiveId } = useSharedAudio();
+  const active = activeId === item.src;
+
+  useEffect(() => {
+    if (!videoRef.current) return;
+    videoRef.current.muted = !active;
+    videoRef.current.volume = volume;
+  }, [active, volume]);
 
   return (
     <div
@@ -41,28 +50,33 @@ export default function MediaTile({
 
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy-deep/40 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
 
-      <div className="absolute top-3 right-3 flex gap-2">
+      <div className="absolute top-3 right-3 flex items-center gap-2">
+        {item.type === "video" && active && (
+          <input
+            type="range"
+            min={0}
+            max={100}
+            value={Math.round(volume * 100)}
+            onPointerDown={(e) => e.stopPropagation()}
+            onClick={(e) => e.stopPropagation()}
+            onChange={(e) => setVolume(Number(e.target.value) / 100)}
+            className="h-1 w-16 accent-fire"
+            aria-label="Volume"
+          />
+        )}
         {item.type === "video" && (
           <button
             type="button"
             data-cursor-hover
+            onPointerDown={(e) => e.stopPropagation()}
             onClick={(e) => {
               e.stopPropagation();
-              setMuted((m) => {
-                const next = !m;
-                if (videoRef.current) videoRef.current.muted = next;
-                return next;
-              });
+              setActiveId(active ? null : item.src);
             }}
             className="flex h-8 w-8 items-center justify-center rounded-full border border-cream/30 bg-navy-deep/70 backdrop-blur-sm transition-colors hover:border-fire"
-            aria-label={muted ? "Unmute" : "Mute"}
+            aria-label={active ? "Mute" : "Unmute"}
           >
-            {muted ? (
-              <svg viewBox="0 0 24 24" fill="none" className="h-3.5 w-3.5" aria-hidden="true">
-                <path d="M4 9v6h4l5 5V4L8 9H4Z" fill="currentColor" />
-                <path d="M17 8.5 21.5 13M21.5 8.5 17 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-              </svg>
-            ) : (
+            {active ? (
               <svg viewBox="0 0 24 24" fill="none" className="h-3.5 w-3.5" aria-hidden="true">
                 <path d="M4 9v6h4l5 5V4L8 9H4Z" fill="currentColor" />
                 <path
@@ -72,12 +86,18 @@ export default function MediaTile({
                   strokeLinecap="round"
                 />
               </svg>
+            ) : (
+              <svg viewBox="0 0 24 24" fill="none" className="h-3.5 w-3.5" aria-hidden="true">
+                <path d="M4 9v6h4l5 5V4L8 9H4Z" fill="currentColor" />
+                <path d="M17 8.5 21.5 13M21.5 8.5 17 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+              </svg>
             )}
           </button>
         )}
         <button
           type="button"
           data-cursor-hover
+          onPointerDown={(e) => e.stopPropagation()}
           onClick={(e) => {
             e.stopPropagation();
             onExpand();
