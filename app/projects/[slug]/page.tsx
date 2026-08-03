@@ -7,7 +7,7 @@ import HoverVideo from "@/components/HoverVideo";
 import RelatedProjects from "@/components/RelatedProjects";
 import ContentSections from "@/components/ContentSections";
 import {
-  projects,
+  visibleProjects,
   getProject,
   categoryLabel,
   socialFormatLabel,
@@ -16,7 +16,7 @@ import {
 type Params = { slug: string };
 
 export function generateStaticParams() {
-  return projects.map((p) => ({ slug: p.slug }));
+  return visibleProjects.map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({
@@ -40,10 +40,10 @@ export default async function ProjectPage({
 }) {
   const { slug } = await params;
   const project = getProject(slug);
-  if (!project) notFound();
+  if (!project || project.archived) notFound();
 
   const isDocumentary = project.category === "documentary";
-  const otherProjects = projects.filter((p) => p.slug !== project.slug);
+  const otherProjects = visibleProjects.filter((p) => p.slug !== project.slug);
   const treatment = isDocumentary
     ? categoryLabel.documentary
     : project.socialFormats

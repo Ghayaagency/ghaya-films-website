@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import MasonryProjectGrid from "@/components/MasonryProjectGrid";
 import Reveal from "@/components/Reveal";
 import {
-  projects,
+  visibleProjects,
   categoryLabel,
   type ProjectCategory,
   type SocialFormat,
@@ -27,7 +27,7 @@ export default async function ProjectsPage({
   const { category } = await searchParams;
   const active = category ?? "";
 
-  const filtered = projects.filter((project) => {
+  const filtered = visibleProjects.filter((project) => {
     if (!active) return true;
     if (active === "documentary" || active === "social") {
       return project.category === (active as ProjectCategory);

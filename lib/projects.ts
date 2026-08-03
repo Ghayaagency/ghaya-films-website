@@ -26,6 +26,7 @@ export type Project = {
   sections?: ContentSection[];
   credits: { label: string; name: string }[];
   pending?: boolean;
+  archived?: boolean;
 };
 
 export const projects: Project[] = [
@@ -107,6 +108,7 @@ export const projects: Project[] = [
       { type: "image", src: "/images/heenat/4.jpg" },
     ],
     credits: [{ label: "Photography", name: "Ghaya Films" }],
+    archived: true,
   },
   {
     slug: "berenjak-maha-island",
@@ -125,6 +127,7 @@ export const projects: Project[] = [
       { type: "image", src: "/images/berenjak/3.jpg" },
     ],
     credits: [{ label: "Photography", name: "Ghaya Films" }],
+    archived: true,
   },
   {
     slug: "dayton-one-way-to-qatar",
@@ -210,6 +213,7 @@ export const projects: Project[] = [
     gallery: [{ type: "image", src: "/images/placeholder.jpg" }],
     credits: [{ label: "Edit", name: "Ghaya Films" }],
     pending: true,
+    archived: true,
   },
   {
     slug: "al-mujadilah-documentary",
@@ -224,8 +228,11 @@ export const projects: Project[] = [
     gallery: [{ type: "image", src: "/images/placeholder.jpg" }],
     credits: [{ label: "Director", name: "Ghaya Films" }],
     pending: true,
+    archived: true,
   },
 ];
+
+export const visibleProjects = projects.filter((p) => !p.archived);
 
 export function getProject(slug: string) {
   return projects.find((p) => p.slug === slug);

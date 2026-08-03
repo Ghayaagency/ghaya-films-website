@@ -3,7 +3,7 @@ import Reveal from "@/components/Reveal";
 import GhayaCTA from "@/components/GhayaCTA";
 import ProjectCard from "@/components/ProjectCard";
 import Testimonials from "@/components/Testimonials";
-import { projects } from "@/lib/projects";
+import { visibleProjects } from "@/lib/projects";
 
 const serviceGroups = [
   {
@@ -128,7 +128,7 @@ export default function Home() {
           </div>
 
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {projects.slice(0, 3).map((project, i) => (
+            {visibleProjects.slice(0, 3).map((project, i) => (
               <Reveal key={project.slug} delay={i * 120}>
                 <ProjectCard project={project} />
               </Reveal>
