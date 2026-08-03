@@ -151,10 +151,10 @@ export default async function ProjectPage({
                 >
                   {item.type === "video" ? (
                     <HoverVideo className="h-full w-full object-cover" src={item.src} />
-                  ) : (
+                  ) : item.type === "image" ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img src={item.src} alt="" className="h-full w-full object-cover" />
-                  )}
+                  ) : null}
                 </Reveal>
               ))}
             </div>

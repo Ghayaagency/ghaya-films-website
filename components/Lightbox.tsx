@@ -54,7 +54,7 @@ export default function Lightbox({
         className="relative max-h-[85vh] max-w-3xl overflow-hidden rounded-2xl"
         onClick={(e) => e.stopPropagation()}
       >
-        {item.type === "video" ? (
+        {item.type === "video" && (
           <video
             ref={videoRef}
             className="max-h-[85vh] w-auto"
@@ -63,9 +63,19 @@ export default function Lightbox({
             playsInline
             controls
           />
-        ) : (
+        )}
+        {item.type === "image" && (
           // eslint-disable-next-line @next/next/no-img-element
           <img src={item.src} alt="" className="max-h-[85vh] w-auto" />
+        )}
+        {item.type === "youtube" && (
+          <iframe
+            className="h-[70vh] w-[85vw] max-w-3xl"
+            src={`https://www.youtube-nocookie.com/embed/${item.id}?autoplay=1`}
+            title="YouTube video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
         )}
       </div>
     </div>

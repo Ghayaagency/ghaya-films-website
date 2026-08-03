@@ -1,9 +1,11 @@
 export type ProjectCategory = "documentary" | "social";
 export type SocialFormat = "reels" | "carousels" | "images" | "long-form";
 
-export type MediaItem =
+export type CoverMedia =
   | { type: "video"; src: string; poster?: string }
   | { type: "image"; src: string };
+
+export type MediaItem = CoverMedia | { type: "youtube"; id: string };
 
 export type ContentSection = {
   label: string;
@@ -19,7 +21,7 @@ export type Project = {
   year: string;
   role: string;
   blurb: string;
-  cover: MediaItem;
+  cover: CoverMedia;
   gallery: MediaItem[];
   sections?: ContentSection[];
   credits: { label: string; name: string }[];
@@ -134,10 +136,29 @@ export const projects: Project[] = [
     role: "Filming, Edit",
     blurb:
       "Dayton Kendrick, an expat living in Qatar, wanted to show that a full, adventurous life in the GCC is closer than people think — through his own experiences and everyday tips. We split the story into long-form videos for YouTube and short-form cuts for social, so the same journey plays differently depending on where you catch it.",
-    cover: { type: "video", src: "/videos/dayton/short-tease.mp4" },
-    gallery: [{ type: "video", src: "/videos/dayton/short-tease.mp4" }],
+    cover: { type: "video", src: "/videos/dayton/reels/1.mp4" },
+    gallery: [
+      { type: "youtube", id: "Nk2MTHsgI1g" },
+      { type: "video", src: "/videos/dayton/reels/1.mp4" },
+      { type: "video", src: "/videos/dayton/reels/2.mp4" },
+      { type: "video", src: "/videos/dayton/reels/3.mp4" },
+    ],
+    sections: [
+      {
+        label: "Long-form",
+        items: [{ type: "youtube", id: "Nk2MTHsgI1g" }],
+      },
+      {
+        label: "Reels",
+        items: [
+          { type: "video", src: "/videos/dayton/reels/1.mp4" },
+          { type: "video", src: "/videos/dayton/reels/2.mp4" },
+          { type: "video", src: "/videos/dayton/reels/3.mp4" },
+        ],
+      },
+    ],
     credits: [
-      { label: "Production", name: "Ghaya Films" },
+      { label: "Post Production", name: "Ghaya Films" },
       { label: "Featuring", name: "Dayton Kendrick" },
     ],
   },
@@ -146,17 +167,34 @@ export const projects: Project[] = [
     title: "Boulders",
     client: "Boulders Climbing Gym",
     category: "social",
-    socialFormats: ["reels", "carousels"],
+    socialFormats: ["reels", "long-form"],
     year: "2025",
-    role: "Filming, Edit",
+    role: "Production",
     blurb:
-      "Route-setters and climbers chasing the next problem — cut into reels and carousels for Boulders' social channels.",
-    cover: { type: "video", src: "/videos/hero-boulders.mp4" },
+      "Boulders is Qatar's first indoor climbing center. For their launch, we told the story through the people building it from the inside — the coach and the route-setters shaping every wall.",
+    cover: { type: "video", src: "/videos/boulders/reel/0.mp4" },
     gallery: [
-      { type: "video", src: "/videos/hero-boulders.mp4" },
-      { type: "video", src: "/videos/boulders-vertical.mp4" },
+      { type: "video", src: "/videos/boulders/reel/0.mp4" },
+      { type: "video", src: "/videos/boulders/reel/1.mp4" },
+      { type: "video", src: "/videos/boulders/reel/2.mp4" },
+      { type: "video", src: "/videos/boulders/reel/3.mp4" },
+      { type: "video", src: "/videos/boulders/reel/4.mp4" },
+      { type: "video", src: "/videos/boulders/reel/5.mp4" },
     ],
-    credits: [{ label: "Edit", name: "Ghaya Films" }],
+    sections: [
+      {
+        label: "Reel",
+        items: [
+          { type: "video", src: "/videos/boulders/reel/0.mp4" },
+          { type: "video", src: "/videos/boulders/reel/1.mp4" },
+          { type: "video", src: "/videos/boulders/reel/2.mp4" },
+          { type: "video", src: "/videos/boulders/reel/3.mp4" },
+          { type: "video", src: "/videos/boulders/reel/4.mp4" },
+          { type: "video", src: "/videos/boulders/reel/5.mp4" },
+        ],
+      },
+    ],
+    credits: [{ label: "Production", name: "Ghaya Films" }],
   },
   {
     slug: "al-mujadilah-explainer",
