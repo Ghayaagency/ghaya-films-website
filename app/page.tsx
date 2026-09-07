@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import GhayaCTA from "@/components/GhayaCTA";
 import ProjectCard from "@/components/ProjectCard";
@@ -29,7 +30,7 @@ export default function Home() {
       <section className="relative flex h-svh min-h-[640px] w-full items-end overflow-hidden">
         <video
           className="absolute inset-0 h-full w-full object-cover"
-          src="/videos/hero-boulders.mp4"
+          src="/videos/home-hero.mp4"
           autoPlay
           muted
           loop
@@ -37,6 +38,14 @@ export default function Home() {
         />
 
         <div className="relative z-10 w-full px-6 pb-16 md:px-10 md:pb-24">
+          <Image
+            src="/images/icon.png"
+            alt="Ghaya Films"
+            width={607}
+            height={306}
+            className="mb-4 h-10 w-auto sm:h-12"
+            priority
+          />
           <h1 className="max-w-3xl font-display text-4xl leading-[1.05] text-balance sm:text-5xl md:text-6xl">
             Human stories come first.
           </h1>
@@ -142,7 +151,13 @@ export default function Home() {
       {/* Closing CTA */}
       <section className="border-t border-cream/10 px-6 py-24 text-center md:py-36">
         <Reveal className="mx-auto max-w-2xl">
-          <p className="font-arabic text-4xl text-fire-soft">غاية</p>
+          <Image
+            src="/images/icon.png"
+            alt="Ghaya Films"
+            width={607}
+            height={306}
+            className="mx-auto h-10 w-auto"
+          />
           <h2 className="mt-4 font-display text-3xl text-balance sm:text-4xl">
             Every story starts with a purpose worth chasing.
           </h2>
