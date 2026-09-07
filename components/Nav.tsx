@@ -14,11 +14,11 @@ export default function Nav() {
     <header className="fixed inset-x-0 top-0 z-50 flex items-center justify-between px-6 py-5 md:px-10 md:py-6">
       <Link href="/" className="relative z-10 flex items-center" data-cursor-hover>
         <Image
-          src="/images/icon.png"
+          src="/images/logo-full.png"
           alt="Ghaya Films"
-          width={90}
-          height={47}
-          className="h-8 w-auto"
+          width={527}
+          height={497}
+          className="h-10 w-auto"
           priority
         />
       </Link>
