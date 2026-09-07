@@ -3,7 +3,6 @@ import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import GhayaCTA from "@/components/GhayaCTA";
 import ProjectCard from "@/components/ProjectCard";
-import Testimonials from "@/components/Testimonials";
 import { visibleProjects } from "@/lib/projects";
 
 const serviceGroups = [
@@ -145,8 +144,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <Testimonials />
 
       {/* Closing CTA */}
       <section className="border-t border-cream/10 px-6 py-24 text-center md:py-36">
