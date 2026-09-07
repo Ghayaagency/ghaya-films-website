@@ -39,11 +39,11 @@ export default function Home() {
 
         <div className="relative z-10 w-full px-6 pb-16 md:px-10 md:pb-24">
           <Image
-            src="/images/icon.png"
+            src="/images/logo-full.png"
             alt="Ghaya Films"
-            width={607}
-            height={306}
-            className="mb-4 h-10 w-auto sm:h-12"
+            width={527}
+            height={497}
+            className="mb-4 h-16 w-auto sm:h-20"
             priority
           />
           <h1 className="max-w-3xl font-display text-4xl leading-[1.05] text-balance sm:text-5xl md:text-6xl">
@@ -152,11 +152,11 @@ export default function Home() {
       <section className="border-t border-cream/10 px-6 py-24 text-center md:py-36">
         <Reveal className="mx-auto max-w-2xl">
           <Image
-            src="/images/icon.png"
+            src="/images/logo-full.png"
             alt="Ghaya Films"
-            width={607}
-            height={306}
-            className="mx-auto h-10 w-auto"
+            width={527}
+            height={497}
+            className="mx-auto h-16 w-auto"
           />
           <h2 className="mt-4 font-display text-3xl text-balance sm:text-4xl">
             Every story starts with a purpose worth chasing.
